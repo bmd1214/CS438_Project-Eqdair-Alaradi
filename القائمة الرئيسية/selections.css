@@ -1,0 +1,47 @@
+body{
+    background-color: aliceblue;
+    background-image: url("../images/الواجهة الاولى دمج.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#logo{
+    width: 50px;
+    margin-top: -8px;
+}
+
+
+.container{
+    margin-top: 70px;
+    margin-right: 0px;
+    align-items:center;
+    height: auto;
+    width: auto;
+    padding-right: 100px;
+}
+*{
+    padding: 0%;
+    margin: 0%;
+    
+}
+
+.nav-items #bc,#bc1{
+    padding: auto;
+    position: relative;
+    
+}
+#b1,#b2,#b3{
+  align-items: center !important;
+}
+footer{
+    height: 75px;
+    background-color: #f2f2f2;
+    position: relative;
+    margin-top: 35%;
+    clear: both;
+}
+h5{
+    margin-top: 5px;
+    padding-right: 210px;
+    align-self: center;
+}

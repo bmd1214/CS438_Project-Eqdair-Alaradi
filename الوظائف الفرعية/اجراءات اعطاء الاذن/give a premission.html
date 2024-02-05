@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <link rel="stylesheet" href="premission.css">
+    <title>اعطاء اذن بالدخول</title>
+</head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+ <img id="logo" class="pull-right" src="/images/1701853905086.png" alt="logo" style="vertical-align: middle;">
+  <a class="navbar-brand" href="#">MAYAR</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-items">
+      <a href="/القائمة الرئيسية/premission admin.html" class="btn btn-dark m-1"  onclick="goback()" class="back-arrow" ><-</a>
+      </li>
+      <li class="nav-item">
+        <a href="/القائمة الرئيسية/main admin selections.html"  class="btn btn-secondary m-1 "id="bc2">القائمة الرئيسية</a>
+      </li>  
+      <li class="nav-item">
+        <a href="/القائمة الرئيسية/premission admin user.html" class="btn btn-success m-1" id="bc1">اجراءات المستخدمين / الموظفين</a>
+      </li>  
+      <li class="nav-items">
+       <button type="button" class="btn btn-primary position-relative m-1">صرف الاذن للمستخدمين
+  <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+    <span class="visually-hidden">New alerts</span>
+  </span>
+</button>
+      <li class="nav-items">
+      <a href="/login/login.html" class="btn btn-info m-1" id="bc">تسجيل الخروج</a>
+      </li> 
+    </ul>
+  </div>
+</nav>
+<body>
+    <div class="container">
+     <h2>اعطاء الاذن بالدخول</h2>
+     <form>
+    <div class="form-group">
+        <label for="n_employee">رقم الموظف</label>
+        <input type="number" id="n_em" name="n_employee" required>
+      </div>
+      <div class="form-group">
+        <label for="user-name">اسم المستخدم</label>
+        <input type="text" id="user_na" name="user-name" required>
+      </div>
+      <div class="form-group">
+        <label for="password">كلمة المرور</label>
+        <input type="password" id="password" name="password">
+      </div>
+      <div class="form-group">
+      <label for="v_password">تأكيد كلمة المرور</label>
+       <input type="password" id="v_password" name="v_password">
+       </div>
+      <div class="form-group">
+        <label for="premission">الاذن</label>
+        <select required>
+            <option value="op0">اختر</option>
+            <option value="op1">مستخدم عادي</option>
+            <option value="op2"> admin ادارة كاملة </option>
+        </select>
+        <br><br>
+        <div class="form-group">
+            <button type="submit">اعطاء الاذن</button>
+            <button type="button">الغاءالعملية</button>
+        </div> 
+      </div>
+    </form>
+  </div>    
+<footer>
+<div class="footer-copyright text-center py-3">صمم لصالح شركة ميار لاستيراد السيارات <br>
+  اتصل بنا 
+  0910000000
+</div>
+</footer>
+</body>
+</html>
