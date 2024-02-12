@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/SupplierOffer.css">
+    <title>إرسال عرض</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <img id="logo" class="pull-right" src="../images/1701853905086.png" alt="logo" style="vertical-align: middle;">
+        <a class="navbar-brand" href="#">MAYAR</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-items">
+                    <a href="/القائمة الرئيسية للمستخدم/users employee selection.html" class="btn btn-dark m-1" onclick="goback()" class="back-arrow"> <-</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/القائمة الرئيسية للمستخدم/main user selections.html" class="btn btn-secondary m-1 " id="bc2">القائمة الرئيسية </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/القائمة الرئيسية للمستخدم/users employee selection.html" class="btn btn-success m-1 " id="bc1">اجراءات الموظفين</a>
+                </li>
+                <li class="nav-items">
+                    <a href="/login/login.html" class="btn btn-info m-1" id="bc">تسجيل الخروج </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>إرسال عرض</h2>
+        <form class="form"  onsubmit="return validateForm()" id="formm">
+            <div class="right-section">
+                <div class="form-group">
+                    <label for="name_em">إسم المورد</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="company">إسم الشركة</label>
+                    <input type="text" id="company" name="company">
+                </div>
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف</label>
+                    <input type="number" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="email">البريد الالكتروني</label>
+                    <input type="text" id="email" name="email">
+                </div>
+            </div>
+            <div class="left-section">
+                <div class="form-group">
+                    <label for="carType">نوع السيارة</label>
+                    <select id="carType" name="carType">
+                        <option value="">اختر</option>
+                        <option value="TOYOTA CAMRY">TOYOTA CAMRY</option>
+                        <option value="TOYOTA COROLLA">TOYOTA COROLLA</option>
+                        <option value="TOYOTA AVALLON">TOYOTA AVALLON</option>
+                        <option value="HONDA ACCORD">HONDA ACCORD</option>
+                        <option value="HONDA CIVIC">HONDA CIVIC</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="year">سنة الصنع</label>
+                    <select id="year" name="year">
+                        <option value="">إختر</option>
+                        <option value="2003">2003</option>
+                        <option value="2004">2004</option>
+                        <option value="2005">2005</option>
+                        <option value="2006">2006</option>
+                        <option value="2007">2007</option>
+                        <option value="2008">2008</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="price">السعر</label>
+                    <input type="number" id="price" name="price">
+                </div>
+                <div class="form-group">
+                    <label for="pictures">الصور</label>
+                    <input id="pectures" type="file" name="pictures[]" multiple accept="image/*" style="border: none;">
+                    <small id="picturesHelp" class="form-text text-muted">يرجى اختيار صور للسيارة.</small>
+                </div>
+            </div>
+            <button type="submit" name="submit">إرسال</button>
+            <button type="reset">الغاء العملية</button>
+        </form>
+    </div>
+    <script src="../js/Validation.js"></script>
+</body>
+
+</html>
+
+
