@@ -4,11 +4,11 @@ class Validation{
 
     public static function validateData($supplierName, $supplierCompany, $supplierPhone, $supplierEmail, $carType, $year, $price, $pictures): bool{
 
-        if (filter_var($supplierEmail, FILTER_VALIDATE_EMAIL)){ //check the supplier Email
-            // Continue with other validations...
-        } else {
-            throw new Exception("The E-mail address is not valid!");
-        }
+        // if (filter_var($supplierEmail, FILTER_VALIDATE_EMAIL)){ //check the supplier Email
+            
+        // } else {
+        //     throw new Exception("The E-mail address is not valid!");
+        // }
 
         $length = strlen($supplierName);
         if($length < 8 || $length > 16){ //check the supplier Name length
@@ -44,7 +44,7 @@ class Validation{
         }
 
         // Supplier Phone number should be all digits
-        if(!is_numeric($supplierPhone)){
+        if(is_numeric($supplierPhone)){
             throw new Exception("The Phone Number should be all digits!");
         }
 

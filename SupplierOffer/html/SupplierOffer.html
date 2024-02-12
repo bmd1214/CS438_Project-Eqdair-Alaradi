@@ -33,7 +33,7 @@
 
     <div class="container">
         <h2>إرسال عرض</h2>
-        <form class="form" action="Main.php" method="post" >
+        <form class="form" method="post" action="../php/Main.php" enctype="multipart/form-data" >
             <div class="right-section">
                 <div class="form-group">
                     <label for="name">إسم المورد</label>
@@ -82,7 +82,7 @@
                 </div>
                 <div class="form-group">
                     <label for="pictures">الصور</label>
-                    <input id="pectures" type="file" name="pictures[]" multiple accept="image/*" style="border: none;">
+                    <input id="pictures" type="file" name="pictures[]" multiple accept="image/*" style="border: none;">
                     <small id="picturesHelp" class="form-text text-muted">يرجى اختيار صور للسيارة.</small>
                 </div>
             </div>
@@ -90,7 +90,6 @@
             <button type="reset">الغاء العملية</button>
         </form>
     </div>
-    <script src="../js/Validation.js"></script>
 </body>
 
 </html>

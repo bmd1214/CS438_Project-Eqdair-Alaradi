@@ -1,11 +1,10 @@
 <?php
 
-
 // this is the main program where objects have been created,
-// and where queries excuted.
-// and the connection with the dataBase is created
 
-require_once 'Connect_db.php';
+use MyNamespace\Car;
+use MyNamespace\Supplier;
+
 require_once 'SupplierOffer.php';
 require_once 'Validation.php';
 
@@ -22,6 +21,7 @@ if(isset($_POST['submit'])){
     $makeYear = $_POST['year'];
     $carPrice = $_POST['price'];
     $pictures = $_FILES['pictures'];
+
 }
 else{
     echo "There is somthing wrong with the submission.";
@@ -39,7 +39,8 @@ try{
     echo $e->getMessage();
     exit;  // here will exit the program if the user entered data that are not allowed.
 }
-    $uploadDirectory = "uploads/";
+   // this directory will contain the images that been uploaded throw the server
+    $uploadDirectory = "C:/xampp/htdocs/uploads/";
 
     // Check if the directory exists, and create it if not
     if (!is_dir($uploadDirectory)) {
@@ -56,26 +57,16 @@ try{
             $uploadedFiles[] = $filePath;
         }
     }
+$supplier = new Supplier($supplierName, $supplierCompany, $supplierPhone, $supplierEmail);
+
+$car = new Car($carType, $makeYear, $carPrice);
     
+$picturesString = implode(",", $uploadedFiles);
 
+$supplierOffer = new MyNamespace\SupplierOffer($supplier,$car, $picturesString);
 
-$conn = new DataBaseConnection();
+$supplierOffer->sendOffer();
 
-$supplierOffer = new MyNamespace\SupplierOffer($supplierName, $supplierPhone, $supplierEmail, $carType, $makeYear, $carPrice);
-
-    // insert data in table named supplier
-
-    $picturesString = implode(",", $uploadedFiles);
-
-    $query = mysqli_query($conn->getConnection(), "INSERT INTO supplier_offers (name, company, phone, email, car_type, year, price, pictures) 
-    VALUES ('$name', '$company', '$phone', '$email', '$carType', '$year', '$price', '$picturesString')");
-
-    // here i check if the queries is excuted succussfully Or not.
-    if($query){
-        echo "Tha Queries has been Excuted Successfully." . '<br>';
-    } else{
-        echo "The Queries Didn't Excute for some reason";
-    }
 
 //$supplierOffer->display();
 
