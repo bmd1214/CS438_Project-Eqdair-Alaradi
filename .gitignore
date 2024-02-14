@@ -2,3 +2,7 @@
 .idea/misc.xml
 *.iml
 *.xml
+SupplierOffer/composer.lock
+SupplierOffer/composer.json
+SupplierOffer/vendor
+result.xml
