@@ -4,14 +4,13 @@ class Validation{
 
     public static function validateData($supplierName, $supplierCompany, $supplierPhone, $supplierEmail, $carType, $year, $price, $pictures): bool{
 
-        // if (filter_var($supplierEmail, FILTER_VALIDATE_EMAIL)){ //check the supplier Email
-            
-        // } else {
-        //     throw new Exception("The E-mail address is not valid!");
-        // }
+        if (!(filter_var($supplierEmail, FILTER_VALIDATE_EMAIL))){ //check the supplier Email
+            throw new Exception("The E-mail address is not valid!");
+        }
+
 
         $length = strlen($supplierName);
-        if($length < 8 || $length > 16){ //check the supplier Name length
+        if($length < 8 || $length > 20){ //check the supplier Name length
             throw new Exception("The Name should be in the range of 8 to 16 characters!");
         }
 
@@ -38,13 +37,16 @@ class Validation{
             throw new Exception("You should enter the Address!");
         }
 
-        // The supplier Name should be all characters
-        if(!(ctype_alpha($supplierName))){
-            throw new Exception("The Name Can't contain any numbers or a special character!");
+       // The supplier Name should be all characters
+        if(!preg_match('/^[a-zA-Z\s]+$/',$supplierName)){
+            throw new Exception("The name Can't contain any numbers or a special character!");
+        }
+        if(!preg_match('/^[a-zA-Z\s]+$/',$supplierCompany)){
+            throw new Exception("The company name Can't contain any numbers or a special character!");
         }
 
         // Supplier Phone number should be all digits
-        if(is_numeric($supplierPhone)){
+        if (!is_numeric($supplierPhone)) {
             throw new Exception("The Phone Number should be all digits!");
         }
 

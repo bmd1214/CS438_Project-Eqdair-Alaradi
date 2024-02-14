@@ -82,8 +82,23 @@ class SupplierOffer {
         print "Make Year: " . $this->car->getMakeYear() . '<br>';
         print "Car Price: " . $this->car->getCarPrice();
     }
+    // function to check if the data already exists or not
+    public function isOfferUnique($conn,$supplierName, $supplierCompany, $supplierPhone, $supplierEmail, $carType, $makeYear, $carPrice) {
+
+        $query = mysqli_query($conn, "SELECT * FROM supplier_offer WHERE
+            supplier_name = '$supplierName' AND
+            supplier_company = '$supplierCompany' AND
+            supplier_phone = '$supplierPhone' AND
+            supplier_email = '$supplierEmail' AND
+            car_type = '$carType' AND
+            make_year = '$makeYear' AND
+            car_price = '$carPrice' ");
+
+        return mysqli_num_rows($query) === 0; // Return true if the data is unique, false otherwise
+    }
 
     public function sendOffer() {
+
         $supplierName = $this->supplier->getSupplierName();
         $supplierCompany = $this->supplier->getSupplierCompany();
         $supplierPhone = $this->supplier->getSupplierPhone();
@@ -94,6 +109,11 @@ class SupplierOffer {
         $makeYear = $this->car->getMakeYear();
 
         $conn = new DataBaseConnection;
+
+        if (!$this->isOfferUnique($conn->getConnection(),$supplierName, $supplierCompany, $supplierPhone, $supplierEmail, $carType, $makeYear, $carPrice)) {
+            echo "The offer already exists in the database.";
+            exit; // Exit the function if data already exists
+        }
 
         // Insert data into the supplier_offer table
         $query = mysqli_query($conn->getConnection(), "INSERT INTO supplier_offer (
@@ -123,6 +143,8 @@ class SupplierOffer {
             echo "The query didn't execute for some reason.";
         }
     }
+
+
 }
 
 ?>

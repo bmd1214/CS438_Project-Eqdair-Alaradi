@@ -15,8 +15,8 @@ if(isset($_POST['submit'])){
     // sign the inserted data into variables
     $supplierName = $_POST['name'];
     $supplierCompany = $_POST['company'];
-    $supplierEmail = $_POST['phone'];
-    $supplierPhone = $_POST['email'];
+    $supplierPhone = $_POST['phone'];
+    $supplierEmail = $_POST['email'];
     $carType = $_POST['carType'];
     $makeYear = $_POST['year'];
     $carPrice = $_POST['price'];
