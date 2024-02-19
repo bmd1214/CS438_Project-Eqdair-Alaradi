@@ -2,9 +2,6 @@
 
 // this is the main program where objects have been created,
 
-use MyNamespace\Car;
-use MyNamespace\Supplier;
-
 require_once 'SupplierOffer.php';
 require_once 'Validation.php';
 
@@ -42,12 +39,12 @@ try{
    // this directory will contain the images that been uploaded throw the server
     $uploadDirectory = "C:/xampp/htdocs/uploads/";
 
-    // Check if the directory exists, and create it if not
+    // check if the directory exists, and create it if not
     if (!is_dir($uploadDirectory)) {
        mkdir($uploadDirectory, 0755, true);
     }
 
-    // Process file upload
+    // process file upload
     $uploadedFiles = [];
     if (isset($_FILES['pictures'])) {
         foreach ($_FILES['pictures']['tmp_name'] as $key => $tmpName) {
@@ -57,16 +54,22 @@ try{
             $uploadedFiles[] = $filePath;
         }
     }
-$supplier = new Supplier($supplierName, $supplierCompany, $supplierPhone, $supplierEmail);
 
+// create an instence of supplier
+$supplier = new Supplier($supplierName, $supplierCompany, $supplierPhone, $supplierEmail);
+// create an instence of car
 $car = new Car($carType, $makeYear, $carPrice);
     
 $picturesString = implode(",", $uploadedFiles);
 
-$supplierOffer = new MyNamespace\SupplierOffer($supplier,$car, $picturesString);
+try{
+    $supplierOffer = new SupplierOffer($supplier,$car, $picturesString);
+}catch(Exception $e){
+    echo $e->getMessage();
+    exit;
+}
 
 $supplierOffer->sendOffer();
-
 
 //$supplierOffer->display();
 

@@ -1,10 +1,6 @@
 <?php
 
-namespace MyNamespace;
-
 require_once 'Connect_db.php';
-
-use DataBaseConnection;
 
 class Car {
     private $carType;
@@ -17,7 +13,7 @@ class Car {
         $this->carPrice = $carPrice;
     }
 
-    // Getter methods
+    // getter methods
     public function getCarType() {
         return $this->carType;
     }
@@ -44,7 +40,7 @@ class Supplier {
         $this->supplierEmail = $supplierEmail;
     }
 
-    // Getter methods
+    // getter methods
     public function getSupplierName() {
         return $this->supplierName;
     }
@@ -63,8 +59,8 @@ class Supplier {
 }
 
 class SupplierOffer {
-    private $supplier; // Composition with Supplier class
-    private $car; // Composition with Car class
+    private $supplier; // composition with Supplier class
+    private $car; // composition with Car class
     private $picturesString;
 
     public function __construct(Supplier $supplier, Car $car, $picturesString) {
@@ -73,7 +69,7 @@ class SupplierOffer {
         $this->picturesString = $picturesString;
     }
 
-    // Show the data after insertion if needed
+    // show the data after insertion if needed
     public function display() {
         print "Name: " . $this->supplier->getSupplierName() . '<br>';
         print "Supplier Phone Number: " . $this->supplier->getSupplierPhone() . '<br>';
@@ -94,7 +90,7 @@ class SupplierOffer {
             make_year = '$makeYear' AND
             car_price = '$carPrice' ");
 
-        return mysqli_num_rows($query) === 0; // Return true if the data is unique, false otherwise
+        return mysqli_num_rows($query) === 0; // return true if the data is unique, false otherwise
     }
 
     public function sendOffer() {
@@ -111,11 +107,11 @@ class SupplierOffer {
         $conn = new DataBaseConnection;
 
         if (!$this->isOfferUnique($conn->getConnection(),$supplierName, $supplierCompany, $supplierPhone, $supplierEmail, $carType, $makeYear, $carPrice)) {
-            echo "The offer already exists in the database.";
-            exit; // Exit the function if data already exists
+            throw "The offer already exists in the database.";
+            // exit the function if data already exists
         }
 
-        // Insert data into the supplier_offer table
+        // insert data into the supplier_offer table
         $query = mysqli_query($conn->getConnection(), "INSERT INTO supplier_offer (
             supplier_name,
             supplier_company,
@@ -136,15 +132,15 @@ class SupplierOffer {
             '$this->picturesString'
         )");
 
-        // Check if the query is executed successfully or not
+        // check if the query is executed successfully or not
         if ($query) {
-            echo "The query has been executed successfully." . '<br>';
+            echo "the query has been executed successfully." . '<br>';
         } else {
             echo "The query didn't execute for some reason.";
         }
     }
 
-
 }
-
 ?>
+
+
