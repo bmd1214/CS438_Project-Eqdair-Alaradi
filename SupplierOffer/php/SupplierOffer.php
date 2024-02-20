@@ -107,7 +107,7 @@ class SupplierOffer {
         $conn = new DataBaseConnection;
 
         if (!$this->isOfferUnique($conn->getConnection(),$supplierName, $supplierCompany, $supplierPhone, $supplierEmail, $carType, $makeYear, $carPrice)) {
-            throw "The offer already exists in the database.";
+            throw new Exception("The offer already exists in the database");
             // exit the function if data already exists
         }
 

@@ -5,7 +5,7 @@ class DataBaseConnection{
     private $userName = "root";
     private $password = "";
     private $dbName = "cic_db";
-    private $connection;  // to create an objec from mysqli
+    private $connection;  // to create an object from mysqli
 
 
     //when an object is created the construct will call function to make connection with DB.
