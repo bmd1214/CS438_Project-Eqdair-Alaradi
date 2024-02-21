@@ -64,13 +64,13 @@ $picturesString = implode(",", $uploadedFiles);
 
 try{
     $supplierOffer = new SupplierOffer($supplier,$car, $picturesString);
+    $supplierOffer->sendOffer();
 }catch(Exception $e){
     echo $e->getMessage();
     exit;
 }
 
-$supplierOffer->sendOffer();
-
+echo "Thank You For Contacting With Us";
 //$supplierOffer->display();
 
 ?>

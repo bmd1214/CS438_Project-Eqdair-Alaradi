@@ -133,11 +133,9 @@ class SupplierOffer {
         )");
 
         // check if the query is executed successfully or not
-        if ($query) {
-            echo "the query has been executed successfully." . '<br>';
-        } else {
-            echo "The query didn't execute for some reason.";
-        }
+        if (!$query) {
+            throw new Exception("the query has not been executed successfully");
+        } 
     }
 
 }
