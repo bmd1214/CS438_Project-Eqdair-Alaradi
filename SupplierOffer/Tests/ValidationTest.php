@@ -4,8 +4,9 @@ use PHPUnit\Framework\TestCase;
 
 class ValidationTest extends TestCase{
 
-    public function testValidData(){
-
+    // test when all inputs are correct
+    public function testValidData(){ 
+        
         $this->assertTrue(Validation::validateData(
             'Ahmad alaradi',
             'MAYAR',
@@ -17,8 +18,8 @@ class ValidationTest extends TestCase{
             ['name' => ['car_picture.jpg']]
         ));
     }
-
-    public function testInvalidEmail(){
+    //test entering an invalid e-mail
+    public function testInvalidEmail(){ 
 
         $this->expectException(Exception::class);
         $this->expectExceptionMessage("The E-mail address is not valid!");
@@ -27,24 +28,24 @@ class ValidationTest extends TestCase{
             'Ahmad alaradi',
             'MAYAR',
             '0911755332',
-            'invalid-email', // Invalid email format
+            'invalid-email', // invalid email format
             'Sedan',
             '2022',
             '10000',
             ['name' => ['car_picture.jpg']]
         );
     }
+    // test entering an invalid phone number
+    public function testInvalidPhoneNumber(){ 
 
-    public function testInvalidPhoneNumber(){
-
-        // Invalid phone number (contains non-digit characters)
+        // invalid phone number (contains non-digit characters)
         $this->expectException(Exception::class);
         $this->expectExceptionMessage("The Phone Number should be all digits!");
 
         Validation::validateData(
             'Ahmad Alaradi',
             'MAYAR',
-            'invalid-phone', // Invalid phone number
+            'invalid-phone', // invalid phone number
             'libyabmd@email.com',
             'Sedan',
             '2022',
@@ -52,8 +53,9 @@ class ValidationTest extends TestCase{
             ['name' => ['car_picture.jpg']]
         );
     }
-    public function testInvalidNameLength(){
-        // test whent the name is shorter than expected
+    // test whent the name is shorter than expected
+    public function testInvalidNameLength(){ 
+        
         $this->expectException(Exception::class);
         $this->expectExceptionMessage("The Name should be in the range of 8 to 20 characters!");
 
@@ -68,8 +70,9 @@ class ValidationTest extends TestCase{
             ['name' => ['car_picture.jpg']]
         );
     }
+    // test when the name is invalid
     public function testInvalidName(){
-        // test whent the name is Invalid
+        
         $this->expectException(Exception::class);
         $this->expectExceptionMessage("The name Can't contain any numbers or a special character!");
 
@@ -84,8 +87,9 @@ class ValidationTest extends TestCase{
             ['name' => ['car_picture.jpg']]
         );
     }
+    // test when the company name is invalid
     public function testInvalidCompanyName(){
-        // test when the company name is invalid
+        
         $this->expectException(Exception::class);
         $this->expectExceptionMessage("The company name Can't contain any numbers or a special character!");
 
@@ -110,7 +114,7 @@ class ValidationTest extends TestCase{
 
         Validation::validateData(...array_values($data));
     }
-    // this function to test the fileds when empt
+    // this function to test the fileds when empty
     public function testEmptyFields(){
         
         $originalData = [
@@ -124,7 +128,7 @@ class ValidationTest extends TestCase{
             'picture' => ['name' => ['car_picture.jpg']]
         ];
 
-        // this to try every input alone if it is empty or not
+        // this to try every input alone when it is empty
         $this->assertEmptyFieldException('supplierName', '', $originalData);
         $this->assertEmptyFieldException('supplierCompany', '', $originalData);
         $this->assertEmptyFieldException('supplierPhone', '', $originalData);

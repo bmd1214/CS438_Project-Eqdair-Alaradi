@@ -110,7 +110,6 @@ class SupplierOffer {
             throw new Exception("The offer already exists in the database");
             // exit the function if data already exists
         }
-
         // insert data into the supplier_offer table
         $query = mysqli_query($conn->getConnection(), "INSERT INTO supplier_offer (
             supplier_name,
@@ -131,7 +130,6 @@ class SupplierOffer {
             '$carPrice',
             '$this->picturesString'
         )");
-
         // check if the query is executed successfully or not
         if (!$query) {
             throw new Exception("the query has not been executed successfully");
