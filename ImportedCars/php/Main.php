@@ -3,6 +3,7 @@
 // this is the main program where objects have been created,
 
 require_once 'Car.php';
+require_once 'CarFactory.php';
 require_once 'ManageCar.php';
 require_once 'Validation.php';
 
@@ -30,8 +31,8 @@ if(isset($_POST['submit'])){
 // Validate the inputs using a static function in class Validation
 
 try{
-    $car = new Car($carType, $makeYear, $carPrice, $fuelType, $mileage, $vin, $color, $transmissionType, $quantity);
-    Validation::validateData($car);
+    $car = CarFactory::createCar($carType, $makeYear, $carPrice, $fuelType, $mileage, $vin, $color, $transmissionType, $quantity);
+    
     new ManageCar($car);
 
 }catch(Exception $e){

@@ -14,7 +14,7 @@ class ManageCar{
 
 
     // function to check if the data already exists or not
-    public function isOfferUnique($conn,$carType, $makeYear, $carPrice, $fuelType, $mileage, $vin, $color, $transmissionType, $quantity) {
+    public function isCarExists($conn,$carType, $makeYear, $carPrice, $fuelType, $mileage, $vin, $color, $transmissionType, $quantity) {
 
         $query = mysqli_query($conn, "SELECT * FROM imported_cars WHERE
             make_year = '$makeYear' AND
@@ -45,7 +45,7 @@ class ManageCar{
 
         $conn = new DataBaseConnection;
 
-        if (!$this->isOfferUnique($conn->getConnection(),$carType, $makeYear, $carPrice, $fuelType, $mileage, $vin, $color, $transmissionType, $quantity)) {
+        if (!$this->isCarExists($conn->getConnection(),$carType, $makeYear, $carPrice, $fuelType, $mileage, $vin, $color, $transmissionType, $quantity)) {
             throw new Exception("The offer already exists in the database");
             // exit the function if data already exists
         }

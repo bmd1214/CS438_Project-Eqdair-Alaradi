@@ -4,16 +4,8 @@ require_once 'Car.php';
 
 class Validation {
 
-    public static function validateData(Car $car) {
-        $carType = $car->getCarType();
-        $makeYear = $car->getMakeYear();
-        $carPrice = $car->getCarPrice();
-        $fuelType = $car->getFuelType();
-        $mileage = $car->getMileage();
-        $vin = $car->getVin();
-        $color = $car->getColor();
-        $transmissionType = $car->getTransmissionType();
-        $quantity = $car->getQuantity();
+    public static function validateData($carType, $makeYear, $carPrice, $fuelType, $mileage, $vin, $color, $transmissionType, $quantity) {
+
 
         // Validation logic for the Car properties
 
