@@ -43,7 +43,7 @@ class Validation {
         }
 
         // validate if VIN is not empty and has a valid format 
-        if (empty($vin) || !preg_match('/^[A-HJ-NPR-Z0-9]{17}$/i', $vin)) {
+        if (empty($vin)) {
             throw new Exception("Invalid VIN!");
         }
 
@@ -58,7 +58,7 @@ class Validation {
         }
 
         // validate if quantity is a positive integer
-        if (!is_int($quantity) || $quantity <= 0) {
+        if (is_int($quantity) || $quantity <= 0) {
             throw new Exception("Invalid quantity!");
         }
 

@@ -3,6 +3,7 @@
 // this is the main program where objects have been created,
 
 require_once 'Car.php';
+require_once 'ManageCar.php';
 require_once 'Validation.php';
 
 // check if the submit button been pressed
@@ -31,22 +32,14 @@ if(isset($_POST['submit'])){
 try{
     $car = new Car($carType, $makeYear, $carPrice, $fuelType, $mileage, $vin, $color, $transmissionType, $quantity);
     Validation::validateData($car);
+    new ManageCar($car);
 
 }catch(Exception $e){
 
     echo $e->getMessage();
     exit;  // here will exit the program if the user entered data that are not allowed.
 }
+
+header("refresh:2;url=../html/importedCars.html");
  
-
-try{
-    // the inserting functions
-}catch(Exception $e){
-    echo $e->getMessage();
-    exit;
-}
-
-echo "Thank You For Contacting With Us";
-//$supplierOffer->display();
-
 ?>
