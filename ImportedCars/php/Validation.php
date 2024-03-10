@@ -1,16 +1,16 @@
 <?php
 
-require_once 'Car.php';
+require_once 'Sedan.php';
 
 class Validation {
 
-    public static function validateData($carType, $makeYear, $carPrice, $fuelType, $mileage, $vin, $color, $transmissionType, $quantity) {
+    public static function validateData($type, $makeYear, $carPrice, $fuelType, $mileage, $vin, $color, $transmissionType, $quantity) {
 
 
         // Validation logic for the Car properties
 
         // validate if the carType is not empty
-        if (empty($carType)) {
+        if (empty($type)) {
             throw new Exception("The carType field is empty!");
         }
 

@@ -2,8 +2,8 @@
 
 // this is the main program where objects have been created,
 
-require_once 'Car.php';
-require_once 'CarFactory.php';
+require_once 'Sedan.php';
+require_once 'SedanFactory.php';
 require_once 'ManageCar.php';
 require_once 'Validation.php';
 
@@ -12,7 +12,8 @@ require_once 'Validation.php';
 if(isset($_POST['submit'])){
 
     // sign the inserted data into variables
-    $carType = $_POST['carType'];
+    $factoryName = 'Sedan' . 'Factory';
+    $type = $_POST['type'];
     $makeYear = $_POST['year'];
     $fuelType = $_POST['fuelType'];
     $mileage = $_POST['mileage'];
@@ -28,12 +29,17 @@ if(isset($_POST['submit'])){
     exit;
 }
 
-// Validate the inputs using a static function in class Validation
 
 try{
-    $car = CarFactory::createCar($carType, $makeYear, $carPrice, $fuelType, $mileage, $vin, $color, $transmissionType, $quantity);
+    if(!class_exists($factoryName)){
+        throw new Exception("The Vehicle type does not Exist!");
+    }
     
-    new ManageCar($car);
+
+    $factory = new $factoryName();
+    $sedan = $factory::createVehicle($type, $makeYear, $carPrice, $fuelType, $mileage, $vin, $color, $transmissionType, $quantity);
+    
+    new ManageCar($sedan);
 
 }catch(Exception $e){
 
@@ -41,6 +47,7 @@ try{
     exit;  // here will exit the program if the user entered data that are not allowed.
 }
 
+// stay in the same page after succeful submission
 header("refresh:2;url=../html/importedCars.html");
  
 ?>

@@ -1,20 +1,21 @@
+
 <?php
 
 require_once 'Connect_db.php';
-require_once 'Car.php';
+require_once 'Sedan.php';
 require_once 'Validation.php';
 
 class ManageCar{
-    private $car;
+    private $sedan;
 
-    public function __construct($car){
-        $this->car = $car;
+    public function __construct($sedan){
+        $this->sedan = $sedan;
         $this->saveCar();
     }
 
 
     // function to check if the data already exists or not
-    public function isCarExists($conn,$carType, $makeYear, $carPrice, $fuelType, $mileage, $vin, $color, $transmissionType, $quantity) {
+    public function isCarExists($conn,$type, $makeYear, $carPrice, $fuelType, $mileage, $vin, $color, $transmissionType, $quantity) {
 
         $query = mysqli_query($conn, "SELECT * FROM imported_cars WHERE
             make_year = '$makeYear' AND
@@ -25,27 +26,27 @@ class ManageCar{
             color = '$color' AND
             trans_type = '$transmissionType' AND
             quantity = '$quantity' AND
-            car_type = '$carType'");
+            car_type = '$type'");
 
         return mysqli_num_rows($query) === 0; // return true if the data is unique, false otherwise
     }
 
     public function saveCar() {
 
-        $carType = $this->car->getCarType();
-        $carPrice = $this->car->getCarPrice();
-        $color = $this->car->getColor();
-        $fuelType = $this->car->getFuelType();
+        $type = $this->sedan->getCarType();
+        $carPrice = $this->sedan->getCarPrice();
+        $color = $this->sedan->getColor();
+        $fuelType = $this->sedan->getFuelType();
 
-        $makeYear = $this->car->getMakeYear();
-        $mileage = $this->car->getMileage();
-        $quantity = $this->car->getQuantity();
-        $transmissionType = $this->car->getTransmissionType();
-        $vin = $this->car->getVin();
+        $makeYear = $this->sedan->getMakeYear();
+        $mileage = $this->sedan->getMileage();
+        $quantity = $this->sedan->getQuantity();
+        $transmissionType = $this->sedan->getTransmissionType();
+        $vin = $this->sedan->getVin();
 
         $conn = new DataBaseConnection;
 
-        if (!$this->isCarExists($conn->getConnection(),$carType, $makeYear, $carPrice, $fuelType, $mileage, $vin, $color, $transmissionType, $quantity)) {
+        if (!$this->isCarExists($conn->getConnection(),$type, $makeYear, $carPrice, $fuelType, $mileage, $vin, $color, $transmissionType, $quantity)) {
             throw new Exception("The offer already exists in the database");
             // exit the function if data already exists
         }
@@ -70,7 +71,7 @@ class ManageCar{
             '$color',
             '$transmissionType',
             '$quantity',
-            '$carType'
+            '$type'
         )");
         // check if the query is executed successfully or not
         if (!$query) {

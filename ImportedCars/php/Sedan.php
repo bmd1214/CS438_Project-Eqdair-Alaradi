@@ -1,7 +1,7 @@
 <?php
 
-class Car {
-    private $carType;
+class Sedan {
+    private $type;
     private $makeYear;
     private $carPrice;
     private $fuelType;
@@ -11,8 +11,8 @@ class Car {
     private $transmissionType;
     private $quantity;
 
-    public function __construct($carType, $makeYear, $carPrice, $fuelType, $mileage, $vin, $color, $transmissionType, $quantity) {
-        $this->carType = $carType;
+    public function __construct($type, $makeYear, $carPrice, $fuelType, $mileage, $vin, $color, $transmissionType, $quantity) {
+        $this->type = $type;
         $this->makeYear = $makeYear;
         $this->carPrice = $carPrice;
         $this->fuelType = $fuelType;
@@ -25,7 +25,7 @@ class Car {
 
     // getter methods
     public function getCarType() {
-        return $this->carType;
+        return $this->type;
     }
 
     public function getMakeYear() {
