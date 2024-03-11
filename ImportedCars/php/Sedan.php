@@ -27,39 +27,30 @@ class Sedan {
     public function getCarType() {
         return $this->type;
     }
-
     public function getMakeYear() {
         return $this->makeYear;
     }
-
     public function getCarPrice() {
         return $this->carPrice;
     }
-
     public function getFuelType() {
         return $this->fuelType;
     }
-
     public function getMileage() {
         return $this->mileage;
     }
-
     public function getVin() {
         return $this->vin;
     }
-
     public function getColor() {
         return $this->color;
     }
-
     public function getTransmissionType() {
         return $this->transmissionType;
     }
-
     public function getQuantity() {
         return $this->quantity;
     }
 }
-
 
 ?>

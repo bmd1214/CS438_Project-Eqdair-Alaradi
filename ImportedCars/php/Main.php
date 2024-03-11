@@ -48,9 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         echo $e->getMessage();
         exit;  // here will exit the program if the user entered data that are not allowed.
     }
-
-    // stay in the same page after succeful submission
-    header("refresh:2;url=../html/importedCars.html");
+    echo "The car is Saved Succesfuly";
 }
  
 ?>

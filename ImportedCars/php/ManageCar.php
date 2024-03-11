@@ -1,6 +1,4 @@
-
 <?php
-
 require_once 'Connect_db.php';
 require_once 'Sedan.php';
 require_once 'Validation.php';
@@ -12,8 +10,6 @@ class ManageCar{
         $this->sedan = $sedan;
         $this->saveCar();
     }
-
-
     // function to check if the data already exists or not
     public function isCarExists($conn,$type, $makeYear, $carPrice, $fuelType, $mileage, $vin, $color, $transmissionType, $quantity) {
 
@@ -30,7 +26,6 @@ class ManageCar{
 
         return mysqli_num_rows($query) === 0; // return true if the data is unique, false otherwise
     }
-
     public function saveCar() {
 
         $type = $this->sedan->getCarType();
