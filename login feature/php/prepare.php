@@ -1,8 +1,8 @@
 <?php
 class User {
     
-    private $username;
-    private $password;
+    private $username;    
+    private $password;     // declare user
     public $conn;
 
     public function __construct($username, $password) {
@@ -10,7 +10,7 @@ class User {
         $this->password = $password;
     }
     public static function getInstance($username, $password) {
-        return new self($username, $password);
+        return new self($username, $password);                            
     }
     public function login() {
         try{
@@ -31,10 +31,12 @@ class User {
         if ($result->num_rows == 1) {
             $row = $result->fetch_assoc();
             if ($row['isadmin'] == 1) {
+                // دخول الى اختصاص المدير في النظام
                 echo 'تم تسجيل الدخول بنجاح كمسؤول';
                 header('Location:http://localhost/Cs438%20project/login%20feature/login/main%20admin%20selections.html');
                 
             } else {
+                  // دخول الى اختصاص الموظف في النظام
                 echo 'تم تسجيل الدخول بنجاح كمستخدم عادي';
                 header('Location: http://localhost/Cs438%20project/login%20feature/login/main%20user%20selections.html');
             }
