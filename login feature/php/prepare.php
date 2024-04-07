@@ -33,12 +33,12 @@ class User {
             if ($row['isadmin'] == 1) {
                 // دخول الى اختصاص المدير في النظام
                 echo 'تم تسجيل الدخول بنجاح كمسؤول';
-                header('Location:http://localhost/Cs438%20project/login%20feature/login/main%20admin%20selections.html');
+                header('Location:http://localhost/Graduate2/%D9%82%D8%A7%D8%A6%D9%85%D8%A9%20%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D8%B1%20%D8%A7%D9%84%D8%B1%D8%A6%D9%8A%D8%B3%D9%8A%D8%A9/main%20admin%20selections.html');
                 
             } else {
                   // دخول الى اختصاص الموظف في النظام
                 echo 'تم تسجيل الدخول بنجاح كمستخدم عادي';
-                header('Location: http://localhost/Cs438%20project/login%20feature/login/main%20user%20selections.html');
+                header('Location:http://localhost/Graduate2/%D9%82%D8%A7%D8%A6%D9%85%D8%A9%20%D8%A7%D9%84%D9%85%D9%88%D8%B8%D9%81%20%D8%A7%D9%84%D8%B1%D8%A6%D9%8A%D8%B3%D9%8A%D8%A9/main%20user%20selections.html');
             }
         } else {
             echo 'اسم المستخدم أو كلمة المرور غير صحيحة';
